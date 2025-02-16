@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BCA PROJECT</title>
+  <style>
+    /* General Reset */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Card Container */
+    .card-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Card Styling */
+    .card {
+      background: linear-gradient(145deg, #ffffff, #d1e7f3);
+      border-radius: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 0 8px rgba(37, 99, 235, 0.4);
+      width: 360px;
+      text-align: center;
+      position: relative;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), 0 0 10px rgba(37, 99, 235, 0.5);
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: auto;
+      border-bottom: 5px solid #2563eb;
+      border-radius: 16px 16px 0 0;
+    }
+
+    .info {
+      padding: 20px;
+    }
+
+    .info h2 {
+      margin: 8px 0;
+      font-size: 26px;
+      color: #2563eb;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .info .position {
+      font-size: 18px;
+      color: #4a5568;
+      margin: 4px 0;
+      font-style: italic;
+    }
+
+    .info .company {
+      font-size: 16px;
+      color: #6b7280;
+      margin: 12px 0 20px;
+      text-transform: capitalize;
+    }
+
+    .contact-info {
+      text-align: left;
+      margin: 20px 0;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #555;
+      padding: 0 20px;
+    }
+
+    .contact-info p {
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .contact-info img {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+    }
+
+    .save-contact {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 20px auto;
+      display: inline-block;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulseEffect 2s infinite;
+    }
+
+    .save-contact:hover {
+      background-color: #2563eb;
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.5);
+    }
+
+    /* Button Animation */
+    @keyframes pulseEffect {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+      }
+      50% {
+        transform: scale(1.1);
+        box-shadow: 0 4px 20px rgba(59, 130, 246, 0.5);
+      }
+    }
+
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .modal-content h3 {
+      margin: 0 0 10px;
+      color: #2563eb;
+      font-size: 20px;
+    }
+
+    .modal-content p {
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .modal-content form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .modal-content input {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+    }
+
+    .modal-content button {
+      background-color: #3b82f6;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .modal-content button:hover {
+      background-color: #2563eb;
+    }
+
+    .modal-content .close-btn {
+      background-color: #e53e3e;
+      margin-top: 10px;
+    }
+
+    .modal-content .close-btn:hover {
+      background-color: #c53030;
+    }
+  </style>
+</head>
+<body>
+  <!-- Card Container -->
+  <div class="card-container">
+    <div class="card">
+      <!-- Profile Image -->
+      <div class="profile-image">
+        <img src="https://i.postimg.cc/ZRBxwdmB/archit.jpg" alt="Archit Sharma">
+      </div>
+
+      <!-- Info Section -->
+      <div class="info">
+        <h2>Archit Sharma</h2>
+        <p class="position">Bachelor of Computer Application</p>
+        <p class="company">ASBM UNIVERSITY</p>
+      </div>
+      
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <p>
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
+          Email: archits243@gmail.com
+        </p>
+        <p>
+          <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Phone">
+          Phone: +91 7847807169
+        </p>
+        <p>
+          <img src="https://cdn-icons-png.flaticon.com/512/220/220236.png" alt="WhatsApp">
+          WhatsApp: 7847807169
+        </p>
+      </div>
+      
+      <!-- Save Contact Button -->
+      <button class="save-contact" onclick="openModal()">Save Contact</button>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="contactModal">
+    <div class="modal-content">
+      <h3>Connect with Archit Sharma</h3>
+      <p>You can now save this card and send your contact details back to Archit Sharma.</p>
+      <form>
+        <input type="text" placeholder="Your name" required />
+        <input type="email" placeholder="Your email" required />
+        <input type="text" placeholder="Your phone number" required />
+        <button type="submit">Save Contact</button>
+      </form>
+      <p style="font-size: 12px; color: #888;">We do not sell your data.</p>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('contactModal');
+
+    function openModal() {
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    // Automatically show modal after 5 seconds
+    setTimeout(openModal, 5000);
+  </script>
+</body>
+</html>
